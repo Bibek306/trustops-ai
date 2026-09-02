@@ -15,7 +15,7 @@ TrustOps is designed around a simple rule: **the LLM is a drafting component, no
 9. Audit events record ingestion, approval, generation, blocking, and review decisions.
 
 ## Agent boundary
-The Deep Agent and MCP gateway expose only:
+The Deep Agent:
 - `search_approved_evidence`
 - `draft_governed_answer`
 

@@ -44,6 +44,20 @@ This makes the system more suitable for security-sensitive questionnaire workflo
 * **Confidentiality guard** that blocks requests for restricted information before reaching the LLM
 * **LangGraph review workflow**
 * **Restricted Deep Agent tools**
+* **Batch questionnaire API**
+* **Evaluation framework** using Recall@5, grounded answers and safe abstention
+* **FastAPI backend**
+* **Streamlit public demo**
+* **Evidence-grounded RAG** using LangChain, Hugging Face and Chroma
+* **Approved evidence governance** with document versions and validity checks
+* **Evidence provenance** through document and chunk-level evidence cards
+* **Safe abstention** when approved evidence is unavailable
+* **Claim verification** to identify potentially unsupported statements
+* **Risk assessment** with Low / Medium / High risk levels
+* **Human-review routing** for high-risk or questionable responses
+* **Confidentiality guard** that blocks requests for restricted information before reaching the LLM
+* **LangGraph review workflow**
+* **Restricted Deep Agent tools**
 * **MCP Evidence Gateway** with least-privilege tools
 * **Batch questionnaire API**
 * **Evaluation framework** using Recall@5, grounded answers and safe abstention
@@ -115,7 +129,6 @@ trustops-ai/
 │   ├── governance.py
 │   ├── review_graph.py
 │   ├── agent.py
-│   └── mcp_server.py
 ├── streamlit_app/
 │   └── dashboard.py
 ├── evaluation/
@@ -187,7 +200,7 @@ Run the evaluation in an environment with the required Hugging Face configuratio
 
 ## Technologies
 
-**Python · LangChain · RAG · Hugging Face · Chroma · LangGraph · Deep Agents · MCP · FastAPI · Streamlit · SQLAlchemy · Pytest**
+**Python · LangChain · RAG · Hugging Face · Chroma · LangGraph · Deep Agents · FastAPI · Streamlit · SQLAlchemy · Pytest**
 
 ## Core Idea
 

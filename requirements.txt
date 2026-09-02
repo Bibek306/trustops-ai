@@ -15,11 +15,9 @@ langchain-huggingface==1.2.2
 langchain-chroma==1.1.0
 chromadb==1.5.9
 
-# Workflow, agents and MCP
+# Workflow, agents
 langgraph==1.2.11
 deepagents==0.3.1
-fastmcp==3.0.0
-mcp==1.26.0
 
 # Frontend and data
 streamlit==1.50.0

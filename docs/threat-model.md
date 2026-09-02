@@ -16,7 +16,7 @@
 | Unsupported generated claim | post-generation claim verification |
 | High-impact answer released automatically | risk routing + human review |
 | Prompt injection inside evidence | evidence is treated as data; agent has no release tool |
-| Agent privilege escalation | least-privilege MCP/agent tools |
+| Agent privilege escalation | least-privilege/agent tools |
 | Untraceable response | chunk-level provenance + audit events |
 | Reviewer decision lost | persisted review records |
 
