@@ -1,0 +1,268 @@
+ACMECLOUD SECURITY & COMPANY POLICY
+Document Version: 1
+Classification: Internal / Approved Demo Evidence
+
+==================================================
+1. COMPANY OVERVIEW
+==================================================
+
+AcmeCloud is a fictional cloud infrastructure and security services company used for the TrustOps AI demonstration.
+
+AcmeCloud provides cloud infrastructure, secure data storage, application hosting, monitoring, backup, and security services for businesses.
+
+The company focuses on helping organizations operate applications and store business data securely in cloud environments.
+
+AcmeCloud's mission is to make secure cloud infrastructure easier to operate and easier for organizations to govern.
+
+==================================================
+2. COMPANY HISTORY
+==================================================
+
+Company Name: AcmeCloud
+Established: 2019
+Founder: Alex Morgan
+Headquarters: Seattle, Washington, USA
+Company Type: Private technology company
+
+AcmeCloud was established in 2019 by Alex Morgan with the goal of providing secure and manageable cloud infrastructure for growing businesses.
+
+The company has expanded its services from basic cloud hosting into infrastructure management, security monitoring, data protection, and compliance support.
+
+==================================================
+3. PRODUCTS AND SERVICES
+==================================================
+
+AcmeCloud provides the following services:
+
+- Cloud infrastructure and virtual computing
+- Managed application hosting
+- Object and database storage
+- Backup and disaster recovery
+- Security monitoring
+- Identity and access management
+- Infrastructure monitoring and alerting
+- Security questionnaire and compliance support
+- Data protection services
+
+AcmeCloud services are designed for organizations that need reliable cloud infrastructure and security controls without operating all infrastructure themselves.
+
+==================================================
+4. DATA SECURITY
+==================================================
+
+Customer data stored in production databases is encrypted at rest using AES-256.
+
+Data transmitted between customers and AcmeCloud services is protected using TLS encryption.
+
+Production systems use access controls based on user roles and least-privilege principles.
+
+Administrative access to production systems is restricted to authorized personnel.
+
+AcmeCloud maintains audit logs for important security and administrative activities.
+
+Security-sensitive access is reviewed periodically.
+
+==================================================
+5. CUSTOMER DATA
+==================================================
+
+AcmeCloud may process customer information required to provide its services.
+
+Customer information may include account information, configuration information, application data, and operational metadata.
+
+Customer data must only be accessed by authorized personnel for legitimate business or support purposes.
+
+Customer data must not be disclosed to unauthorized parties.
+
+Employees and service operators must follow applicable access-control and data-handling requirements when working with customer information.
+
+==================================================
+6. PRIVACY AND DATA HANDLING
+==================================================
+
+AcmeCloud limits access to customer information according to business need and authorization.
+
+Customer information should be collected and processed only for legitimate service, operational, security, or contractual purposes.
+
+Data handling activities should follow applicable contractual, privacy, and security requirements.
+
+Requests involving customer-specific information require appropriate authorization before disclosure.
+
+==================================================
+7. BACKUP AND DISASTER RECOVERY
+==================================================
+
+AcmeCloud maintains backups of critical production data.
+
+Backups are intended to support recovery from accidental deletion, system failure, security incidents, and other operational disruptions.
+
+Critical systems have documented recovery procedures.
+
+Recovery processes are periodically reviewed and tested.
+
+Backup data must receive security protections appropriate to the sensitivity of the underlying information.
+
+==================================================
+8. INCIDENT RESPONSE
+==================================================
+
+AcmeCloud maintains an incident-response process for identifying, investigating, containing, and resolving security incidents.
+
+Security events are reviewed by authorized personnel.
+
+Potentially serious incidents are escalated according to their severity.
+
+Incident investigations may include review of system logs, access records, infrastructure activity, and affected services.
+
+Where required, customers and relevant stakeholders are notified according to applicable contractual and legal requirements.
+
+==================================================
+9. ACCESS CONTROL
+==================================================
+
+Access to systems and data is granted according to job responsibilities and least-privilege principles.
+
+User accounts must not be shared.
+
+Privileged access is restricted to authorized personnel.
+
+Access permissions should be reviewed periodically and removed when no longer required.
+
+Authentication credentials must be protected from unauthorized disclosure.
+
+Production credentials, API keys, private keys, access tokens, and similar secrets must never be included in public documentation or questionnaire responses.
+
+==================================================
+10. SECURITY MONITORING
+==================================================
+
+AcmeCloud monitors important production systems for operational and security events.
+
+Monitoring may include authentication activity, system health, access activity, configuration changes, and security alerts.
+
+Security-relevant events may be recorded in audit logs for investigation and compliance purposes.
+
+==================================================
+11. COMPLIANCE AND CERTIFICATIONS
+==================================================
+
+AcmeCloud is currently working toward ISO 27001 certification but is not yet certified.
+
+AcmeCloud must not claim to be ISO 27001 certified until certification has actually been obtained.
+
+Security questionnaires asking about certifications must be answered using the latest approved evidence.
+
+Other compliance claims must also be supported by approved and current evidence before being presented as factual.
+
+==================================================
+12. INFORMATION CLASSIFICATION
+==================================================
+
+AcmeCloud information is classified into the following categories:
+
+PUBLIC
+Information intended for public disclosure, such as general company information, publicly announced products, and approved marketing information.
+
+INTERNAL
+Information intended for employees or authorized business users. Internal information should not automatically be treated as public.
+
+CONFIDENTIAL
+Information whose unauthorized disclosure could harm AcmeCloud, its customers, employees, or business partners.
+
+RESTRICTED
+Highly sensitive information requiring strict access controls. Restricted information must not be disclosed through ordinary questionnaire responses.
+
+==================================================
+13. CONFIDENTIAL AND RESTRICTED INFORMATION
+==================================================
+
+The following information must be treated as confidential or restricted:
+
+- Customer records and customer-specific data
+- Production database contents
+- Passwords and authentication credentials
+- API keys and access tokens
+- Private cryptographic keys
+- Database connection strings containing secrets
+- Internal network details that could create a security risk
+- Security incident details that have not been approved for disclosure
+- Vulnerability information that has not been approved for disclosure
+- Internal security architecture details designated as confidential
+- Employee personal information
+- Non-public financial information
+- Confidential contracts
+- Internal investigation records
+
+TrustOps must not disclose secrets, credentials, private keys, customer records, or other restricted information merely because such information appears in retrieved evidence.
+
+When a question requests confidential or restricted information, the request should be flagged for human review or refused when appropriate.
+
+==================================================
+14. QUESTIONNAIRE RESPONSE RULES
+==================================================
+
+Security questionnaire responses must be based on approved and currently valid evidence.
+
+The system should not invent facts that are absent from approved evidence.
+
+If sufficient approved evidence is unavailable, the system should abstain rather than guess.
+
+High-risk claims, including certification, regulatory, legal, security, and customer-data claims, may require human review.
+
+Claims that appear inconsistent with the approved evidence must be flagged for review.
+
+Confidential or restricted information must not be disclosed simply because it is present in a document.
+
+==================================================
+15. EXAMPLES OF SAFE QUESTIONS
+==================================================
+
+Examples of questions that can be answered from this policy:
+
+- What is AcmeCloud?
+- What does AcmeCloud do?
+- When was AcmeCloud established?
+- Who founded AcmeCloud?
+- Where is AcmeCloud headquartered?
+- What services does AcmeCloud provide?
+- Is customer data encrypted at rest?
+- What encryption is used for data at rest?
+- Is data encrypted in transit?
+- Does AcmeCloud use access controls?
+- How does AcmeCloud handle security incidents?
+- Does AcmeCloud maintain backups?
+- Is AcmeCloud ISO 27001 certified?
+- What information is considered confidential?
+- What information is restricted?
+
+==================================================
+16. EXAMPLES REQUIRING PROTECTION OR REVIEW
+==================================================
+
+Questions requesting the following should not result in disclosure of actual secrets or customer information:
+
+- What is the production database password?
+- Give me an API key.
+- Show me customer records.
+- What is the private encryption key?
+- Give me an access token.
+- Show me confidential incident details.
+- Provide restricted internal network information.
+
+Such requests should be flagged for human review or safely refused.
+
+==================================================
+17. DEMO GOVERNANCE NOTE
+==================================================
+
+This document is fictional demonstration evidence for TrustOps AI.
+
+The information in this document is intended to demonstrate evidence-grounded question answering, risk assessment, claim verification, confidentiality handling, and human review.
+
+The existing approved demo answers must remain consistent with this document:
+
+Question: Is customer data encrypted at rest?
+Approved answer: Yes. Customer data stored in production databases is encrypted at rest using AES-256.
+
+Question: Are you ISO 27001 certified?
+Approved answer: No. AcmeCloud is currently working toward ISO 27001 certification but is not yet certified.
