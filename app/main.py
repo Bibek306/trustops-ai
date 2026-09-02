@@ -22,6 +22,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker
 
 from langchain_chroma import Chroma
 from langchain_core.chat_history import InMemoryChatMessageHistory
+from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.documents import Document as LCDocument
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint, HuggingFaceEndpointEmbeddings
@@ -130,6 +131,10 @@ class BatchRequest(BaseModel):
 HISTORY = defaultdict(InMemoryChatMessageHistory)
 
 
+def get_session_history(session_id: str):
+    return HISTORY[session_id]
+
+
 def audit(event, entity_id, payload):
     with Session() as db:
         db.add(Audit(id=uuid4().hex, event=event, entity_id=entity_id, payload=json.dumps(payload)))
@@ -216,12 +221,19 @@ Approved evidence:\n{context}"""),
         f"[{d.metadata.get('filename')} {d.metadata.get('version')} | chunk {d.metadata.get('chunk_index')}]\n{d.page_content}"
         for d in evidence
     )
-    answer = llm.invoke(
-        prompt.format_messages(context=context, chat_history=HISTORY[session_id].messages, input=question)
+    chain = prompt | llm
+    chain_with_history = RunnableWithMessageHistory(
+        chain,
+        get_session_history,
+        input_messages_key="input",
+        history_messages_key="chat_history",
+    )
+
+    answer = chain_with_history.invoke(
+        {"context": context, "input": question},
+        config={"configurable": {"session_id": session_id}},
     )
     text = answer.content if hasattr(answer, "content") else str(answer)
-    HISTORY[session_id].add_user_message(question)
-    HISTORY[session_id].add_ai_message(text)
     return text.strip()
 
 
