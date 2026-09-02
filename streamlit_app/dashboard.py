@@ -157,5 +157,3 @@ if st.button("Generate governed answer", type="primary"):
             st.write(card["quote"])
 
 st.divider()
-st.markdown("**Flow:** Question → RAG → Approved Evidence → Draft → Verification → Risk → Human Review")
-st.caption("LangChain • RAG • Chroma • LangGraph • Deep Agents")
