@@ -1,55 +1,97 @@
-# TrustOps AI
+# 🛡️ TrustOps AI
 
 **Evidence-Governed AI for Security Questionnaire Automation**
 
-TrustOps is a GenAI application that helps answer security questionnaires using approved company evidence. Instead of trusting the LLM blindly, TrustOps retrieves evidence, generates a draft, verifies the answer, assigns risk, and flags unsupported or high-risk responses for human review.
+TrustOps AI is a GenAI application for answering security questionnaires using approved company evidence.
 
-## Why TrustOps stands out
+Instead of trusting an LLM blindly, TrustOps retrieves approved evidence, generates a draft, verifies its claims, assesses risk, and routes high-risk or unsupported responses for human review.
 
-A normal RAG chatbot mainly does:
+## Why TrustOps?
+
+A conventional RAG chatbot typically follows:
 
 ```text
 Question → Retrieve → LLM → Answer
 ```
 
-TrustOps adds a simple trust layer:
+TrustOps adds a governance layer:
 
 ```text
 Question
    ↓
-RAG retrieves approved evidence
+Retrieve approved evidence
    ↓
-LLM creates a draft
+Generate draft
    ↓
-Claim verification
+Verify claims
    ↓
-Risk assessment
+Assess risk
    ↓
-Safe answer OR human review
+Grounded answer OR Human Review
 ```
 
-### Key features
+This makes the system more suitable for security-sensitive questionnaire workflows where unsupported claims can be costly.
 
-- RAG with LangChain, Hugging Face hosted models, embeddings and Chroma
-- Approved/current evidence governance
-- Evidence cards with document and chunk provenance
-- Safe abstention when evidence is missing
-- Simple claim verification
-- Explainable low/medium/high risk assessment
-- LangGraph human-review workflow
-- Restricted Deep Agent tools
-- MCP Evidence Gateway with least-privilege tools
-- Batch questionnaire API
-- Simple evaluation: Recall@5, Grounded Answers, Safe Abstention
-- FastAPI backend and Streamlit public demo
+## Key Features
 
-## Public demo deployment
+* **Evidence-grounded RAG** using LangChain, Hugging Face and Chroma
+* **Approved evidence governance** with document versions and validity checks
+* **Evidence provenance** through document and chunk-level evidence cards
+* **Safe abstention** when approved evidence is unavailable
+* **Claim verification** to identify potentially unsupported statements
+* **Risk assessment** with Low / Medium / High risk levels
+* **Human-review routing** for high-risk or questionable responses
+* **Confidentiality guard** that blocks requests for restricted information before reaching the LLM
+* **LangGraph review workflow**
+* **Restricted Deep Agent tools**
+* **MCP Evidence Gateway** with least-privilege tools
+* **Batch questionnaire API**
+* **Evaluation framework** using Recall@5, grounded answers and safe abstention
+* **FastAPI backend**
+* **Streamlit public demo**
 
-The recommended deployment is **Streamlit Community Cloud**. The public demo uses a hosted LLM, so users do not need Hugging Face Inference Providers, a local model, or any local setup.
+## Live Demo
 
-### Environment variables
+**Try the public Streamlit demo:**
+https://trustops-ai.streamlit.app/
 
-For local development or testing, fill the included `.env` file:
+The demo automatically loads an approved sample security policy, so no document upload is required.
+
+### Demo questions
+
+Try:
+
+> **Is customer data encrypted at rest?**
+
+This demonstrates a normal evidence-grounded response.
+
+Then try:
+
+> **Are you ISO 27001 certified?**
+
+This demonstrates a **high-risk compliance response**. TrustOps can provide an evidence-supported answer while still flagging the response for human review.
+
+Finally try:
+
+> **What is the production database password?**
+
+This demonstrates the **confidentiality guard**. The request is blocked before being sent to the LLM.
+
+## Deployment
+
+The public demo runs on **Streamlit Community Cloud** using a Hugging Face hosted model.
+
+Users do not need:
+
+* A local LLM
+* Ollama
+* GPU hardware
+* A local vector database
+* Any local project setup
+
+### Environment Variables
+
+For local development:
 
 ```env
 HF_TOKEN=your_huggingface_token_here
@@ -58,35 +100,11 @@ HF_MODEL=openai/gpt-oss-120b
 HF_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
 ```
 
-For Streamlit Community Cloud, add the same `HF_TOKEN` in **Secrets** instead of committing it. Hugging Face Inference Providers require a token with the `Make calls to Inference Providers` permission.
+For Streamlit Community Cloud, configure `HF_TOKEN` through the application's **Secrets** settings.
 
-Hugging Face currently provides a small monthly free credit for free accounts, subject to change; usage beyond included credits requires additional billing.
+**Never commit API keys or tokens to GitHub.**
 
-Do not commit API keys to GitHub.
-
-### Deploy
-
-1. Push this repository to GitHub.
-2. Open Streamlit Community Cloud.
-3. Create a new app and select `streamlit_app/dashboard.py`.
-4. Add `HF_TOKEN` in the app Secrets settings.
-5. Deploy.
-
-The app automatically loads the bundled sample security policy, so anyone opening the public URL can try it immediately.
-
-## Demo questions
-
-Try:
-
-> Is customer data encrypted at rest?
-
-Then try:
-
-> Are you ISO 27001 certified?
-
-The first should be answered from the sample policy. The second demonstrates safe abstention because the sample evidence does not establish certification.
-
-## Project structure
+## Project Structure
 
 ```text
 trustops-ai/
@@ -112,14 +130,67 @@ trustops-ai/
 
 ## Evaluation
 
-Keep evaluation simple. TrustOps measures only three things:
+TrustOps includes a lightweight evaluation framework covering three areas:
 
-1. **Recall@5** — did the retriever find the expected evidence?
-2. **Grounded Answers** — did the generated answer pass evidence-based verification?
-3. **Safe Abstention** — did the system refuse to answer when evidence was missing?
+### 1. Recall@5
 
-Run the evaluation in an environment with the required API configuration and approved evidence loaded.
+Measures whether the retriever finds the expected evidence within the top five retrieved chunks.
+
+### 2. Grounded Answers
+
+Checks whether generated responses are supported by the retrieved evidence.
+
+### 3. Safe Abstention
+
+Checks whether TrustOps refuses to answer when approved evidence is insufficient.
+
+Run the evaluation in an environment with the required Hugging Face configuration and approved evidence loaded.
+
+## Architecture
+
+```text
+                    ┌─────────────────┐
+                    │    Question     │
+                    └────────┬────────┘
+                             ↓
+                    ┌─────────────────┐
+                    │  Risk / Guard   │
+                    └────────┬────────┘
+                             ↓
+                    ┌─────────────────┐
+                    │  RAG Retrieval  │
+                    │ Chroma + HF Emb │
+                    └────────┬────────┘
+                             ↓
+                    ┌─────────────────┐
+                    │ Approved        │
+                    │ Evidence       │
+                    └────────┬────────┘
+                             ↓
+                    ┌─────────────────┐
+                    │   LLM Draft     │
+                    └────────┬────────┘
+                             ↓
+                    ┌─────────────────┐
+                    │ Claim           │
+                    │ Verification    │
+                    └────────┬────────┘
+                             ↓
+                    ┌─────────────────┐
+                    │ Risk Assessment │
+                    └────────┬────────┘
+                             ↓
+                 ┌───────────┴───────────┐
+                 ↓                       ↓
+          Grounded Draft           Human Review
+```
 
 ## Technologies
 
-Python · LangChain · RAG · Hugging Face · Chroma · LangGraph · Deep Agents · MCP · FastAPI · Streamlit · SQLAlchemy · Pytest
+**Python · LangChain · RAG · Hugging Face · Chroma · LangGraph · Deep Agents · MCP · FastAPI · Streamlit · SQLAlchemy · Pytest**
+
+## Core Idea
+
+TrustOps is not designed to make an LLM simply **answer more questions**.
+
+It is designed to make the system **know when it should answer, when it should abstain, and when a human should review the response.**
